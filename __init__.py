@@ -13,7 +13,7 @@ class Updates:
     else:
       return True
       
-  def getData(self, url, data, place, itemOccurence):
+  def getData(self, url, place, itemOccurence):
     contents = requests.get(url)
     contents = contents.text
     soup = BeautifulSoup(contents, "html.parser")
