@@ -17,4 +17,4 @@ class Updates:
     contents = requests.get(url)
     contents = contents.text
     soup = BeautifulSoup(contents, "html.parser")
-    return print soup(place)[itemOccurence].string
+    return soup(place)[itemOccurence].string
