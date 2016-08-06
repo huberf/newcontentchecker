@@ -12,3 +12,9 @@ class Updates:
       return False
     else:
       return True
+      
+  def getData(self, url, data, place, itemOccurence):
+    contents = requests.get(url)
+    contents = contents.text
+    soup = BeautifulSoup(contents, "html.parser")
+    return print soup(place)[itemOccurence].string
