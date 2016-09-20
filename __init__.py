@@ -18,3 +18,16 @@ class Updates:
     contents = contents.text
     soup = BeautifulSoup(contents, "html.parser")
     return soup(place)[itemOccurence].string
+
+  # This is meant to return the data in a web list
+  # Outputs an array with the data elements
+  def getListData(self, url, place, itemOccurence):
+    contents = requests.get(url)
+    contents = contents.text
+    soup = BeautifulSoup(contents, "html.parser")
+    results = soup(place)[itemOccurence]
+    results = results.findAll("li")
+    toReturn = []
+    for i in results:
+      toReturn.append(i.text)
+    return toReturn
