@@ -12,7 +12,7 @@ class Updates:
       return False
     else:
       return True
-      
+
   def getData(self, url, place, itemOccurence=0):
     contents = requests.get(url)
     contents = contents.text
@@ -31,3 +31,19 @@ class Updates:
     for i in results:
       toReturn.append(i.text)
     return toReturn
+
+  def checkListData(self, url, data, place, itemOccurence=0, debug=False):
+    contents = requests.get(url)
+    contents = contents.text
+    soup = BeautifulSoup(contents, "html.parser")
+    results = soup(place)[itemOccurence]
+    results = results.findAll("li")
+    toReturn = []
+    for i in results:
+      toReturn.append(i.text)
+    if debug:
+      print toReturn
+    if toReturn == data:
+      return False
+    else:
+      return True
